@@ -16,6 +16,9 @@
 
     <string name="coffee_list">Coffee List</string>
     <string name="coffee_favorites">My Favorite Coffee</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- TAMBAHKAN INI -->
+    <string name="starbucks_title">STARBUCKS</string>
+    <string name="janji_jiwa_title">JANJI JIWA</string>
+    <string name="kopi_kenangan_title">KOPI KENANGAN</string>
 </resources>
