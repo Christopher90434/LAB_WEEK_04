@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 
 class ListFragment : Fragment() {
 
@@ -18,29 +19,22 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<View>(R.id.affogato).setOnClickListener {
-            openDetail("AFFOGATO", "Espresso poured on a vanilla ice cream")
-        }
+        val coffeeList = listOf<View>(
+            view.findViewById(R.id.affogato),
+            view.findViewById(R.id.americano),
+            view.findViewById(R.id.latte)
+        )
 
-        view.findViewById<View>(R.id.americano).setOnClickListener {
-            openDetail("AMERICANO", "Espresso with added hot water")
-        }
-
-        view.findViewById<View>(R.id.latte).setOnClickListener {
-            openDetail("LATTE", "Espresso with steamed milk")
+        coffeeList.forEach { coffee ->
+            val fragmentBundle = Bundle()
+            fragmentBundle.putInt(COFFEE_ID, coffee.id)
+            coffee.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_listFragment_to_detailFragment, fragmentBundle)
+            )
         }
     }
 
-    private fun openDetail(title: String, desc: String) {
-        val fragment = DetailFragment()
-        val bundle = Bundle()
-        bundle.putString("title", title)
-        bundle.putString("desc", desc)
-        fragment.arguments = bundle
-
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
-            .commit()
+    companion object {
+        const val COFFEE_ID = "COFFEE_ID"
     }
 }
