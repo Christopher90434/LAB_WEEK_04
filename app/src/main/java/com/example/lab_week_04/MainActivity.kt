@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -26,11 +27,11 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        // Setup drawer layout - INI YANG PENTING!
+        // Setup drawer layout - TAMBAHKAN cafeFragment
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.listFragment, R.id.favoritesFragment
+                R.id.listFragment, R.id.favoritesFragment, R.id.cafeFragment
             ), drawerLayout
         )
 
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity() {
         // Setup navigation view
         val navView: NavigationView = findViewById(R.id.nav_view)
         navView.setupWithNavController(navController)
+
+        // TAMBAHKAN BOTTOM NAVIGATION SETUP
+        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_nav)
+        bottomNav.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

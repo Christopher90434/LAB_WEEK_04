@@ -27,4 +27,11 @@
         android:label="FavoritesFragment"
         tools:layout="@layout/fragment_favorites" />
 
+    <!-- TAMBAHKAN FRAGMENT BARU INI -->
+    <fragment
+        android:id="@+id/cafeFragment"
+        android:name="com.example.labweek04.CafeFragment"
+        android:label="CafeFragment"
+        tools:layout="@layout/fragment_cafe" />
+
 </navigation>
